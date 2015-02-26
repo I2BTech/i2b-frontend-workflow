@@ -20,6 +20,7 @@
     "jquery": "1.11.2",
     "selectivizr": "latest",
     "css3pie": "latest",
+    "respond": "latest",
     "yui3": "latest"
   }
 }

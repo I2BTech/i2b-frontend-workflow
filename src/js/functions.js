@@ -1,1 +1,1 @@
-// Global Functions
+/* */
