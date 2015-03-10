@@ -1,9 +1,9 @@
-Automatización de tareas para proyectos en Front-End
+I2B Frontend WorkFlow
 ===
 
 #####Adaptado para Proyectos I2B.cl
 
-Este es un sencillo flujo que pueden utilizar para proyectos front-end. Debes tener lo fundamental para funcionar:
+Este es un sencillo flujo que pueden utilizar para proyectos frontend. Debes tener lo fundamental para funcionar:
 
 - [NodeJS](http://nodejs.org/download/)
 - [LiveReload](http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions)
@@ -49,32 +49,32 @@ Es el archivo base con el cual crearemos las tareas que necesitamos corra **Grun
 
 El directorio base se llama `/simple-grunt-workflow` y contiene todo lo necesario para comenzar a trabajar. Suponiendo que trabajas en un servidor local, la estructura básica de archivos es la siguiente:
 
-	/simple-grunt-workflow/Gruntfile.js
-	/simple-grunt-workflow/package.json
-	/simple-grunt-workflow/ftppass (este archivo cuando necesario debes renombrarlo a .ftppass)
-	/simple-grunt-workflow/dist/index.html
+	/proyecto/Gruntfile.js
+	/proyecto/package.json
+	/proyecto/ftppass (este archivo cuando necesario debes renombrarlo a .ftppass)
+	/proyecto/dist/index.html
 	
 El directorio donde trabajarás tus assets se llama `/src ` y contiene:
 
-	/simple-grunt-workflow/src/js/
-	/simple-grunt-workflow/src/js/libs/
-	/simple-grunt-workflow/src/sass/
-	/simple-grunt-workflow/src/sass/inc/
-	/simple-grunt-workflow/src/jade/
-	/simple-grunt-workflow/src/jade/inc/
-	/simple-grunt-workflow/src/images/
-	/simple-grunt-workflow/src/images/sprites/
+	/proyecto/src/js/
+	/proyecto/src/js/libs/
+	/proyecto/src/sass/
+	/proyecto/src/sass/inc/
+	/proyecto/src/jade/
+	/proyecto/src/jade/inc/
+	/proyecto/src/images/
+	/proyecto/src/images/sprites/
 	
 Los que después de procesados por **GruntJS** residirán en `/assets` y son los que debes llamar desde tus archivos **HTML**:
 
-	/simple-grunt-workflow/dist/assets/js/
-	/simple-grunt-workflow/dist/assets/js/libs/
-	/simple-grunt-workflow/dist/assets/css/
-	/simple-grunt-workflow/dist/assets/images/
+	/proyecto/dist/assets/js/
+	/proyecto/dist/assets/js/libs/
+	/proyecto/dist/assets/css/
+	/proyecto/dist/assets/images/
 	
 Para comenzar a trabajar, en Terminal/Consola debes estar en el directorio que estés trabajando:
 
-	$ cd /path/to/simple-grunt-workflow/
+	$ cd /path/to/proyecto/
 
 Para instalar los plugins a utilizarse y que están definidos en **package.json**:
 
@@ -116,3 +116,7 @@ Se adjunta el plugin **ftp-deploy** el que debe utilizarse cuando necesitas move
 	$ grunt ftp-deploy
 
 **Happy Coding :)**
+
+
+####To-Do:
+- Task para performance
