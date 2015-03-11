@@ -14,6 +14,8 @@ Este es un sencillo flujo que pueden utilizar para proyectos frontend. Debes ten
 - [Bower](http://bower.io/):
 	
 	`$ sudo npm install -g bower`
+	
+- [GIT](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 - [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
 
