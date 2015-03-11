@@ -114,6 +114,20 @@ A través de un nueva tarea de **GruntJS** se prueba el archivo **JavaScript** e
 Se adjunta el plugin **ftp-deploy** el que debe utilizarse cuando necesitas mover archivos a tu servidor de pruebas a través del protocolo FTP. Se configura en **Gruntfile.js** la URL, puerto y dónde se lee el u/p de acceso. Éstos se guardan en un archivo **ftppass** el que se adjunta, pero en tu directorio de trabajo debe guardarse como archivo oculto **.ftppass**. Además, está pre-configurado los archivos y directorios que se excluyen, como **Gruntfile.js**, **package.json**, **/assets-dev** y **/node_modules** entre otros. Cuando necesites subir a productivo tus archivos, desactivas el **watch** de **GruntJS** (`⌘+.` ó `ctrl+.`) y envías todos tus archivos al servidor con el siguiente comando:
 
 	$ grunt ftp-deploy
+	
+###Backup
+
+Se agrega un task a través del plugin **contrib-compress** el que comprime en .zip los siguientes archivos y directorios de trabajo:
+
+	src/**/*.*
+	dist/**/*.*
+	**.*
+
+Para utilizarlo basta correr:
+
+	$ grunt backup
+
+Y todo .zip generado se guardará en el directorio `/backup` con la nomenclatura `nombreproyecto_YYYYMMDD-HHMMss.zip`
 
 **Happy Coding :)**
 

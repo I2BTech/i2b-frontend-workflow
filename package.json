@@ -1,14 +1,14 @@
 {
-  "name": "simple-grunt-workflow",
-  "version": "0.2.5",
-  "homepage": "http://www.csslab.cl/2014/04/07/automatizacion-de-tareas-para-proyectos-en-front-end/",
+  "name": "I2B Frontend WorkFlow",
+  "version": "0.1.5",
+  "homepage": "https://github.com/I2BTech/i2b-frontend-workflow#i2b-frontend-workflow",
   "bugs": {
-    "url": "https://github.com/juanbrujo/simple-grunt-workflow/issues"
+    "url": "https://github.com/I2BTech/i2b-frontend-workflow/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/juanbrujo/simple-grunt-workflow"
+    "url": "https://github.com/I2BTech/i2b-frontend-workflow"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
