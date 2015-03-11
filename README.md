@@ -15,6 +15,14 @@ Este es un sencillo flujo que pueden utilizar para proyectos frontend. Debes ten
 	
 	`$ sudo npm install -g bower`
 	
+Atención usuarios de Windows:
+
+	To use Bower on Windows, you must install msysgit correctly. Be sure to check the option shown below:
+
+	[ ] Use Git bash only
+	[x] Run Git from the Windows Command Prompt
+	[ ] Run Git and included Unix tools from the Windows Command Prompt
+	
 - [GIT](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 - [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
