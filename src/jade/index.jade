@@ -1,11 +1,12 @@
 include inc/mixins
+include inc/variables
 
 doctype html(lang='es')
 head
 	meta(charset='utf-8')
 	meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
 	meta(name='viewport', content='width=device-width')
-	title title
+	title #{pageTitle}
 	link(rel='stylesheet', href='assets/css/style.css')
 	<!--[if lt IE 8]>
 	script(src='assets/js/libs/html5shiv.js')
@@ -13,9 +14,7 @@ head
 	script(src='assets/js/libs/modernizr-detectizr.js')
 
 body
-	h1 Simple Grunt Workflow | I2B version
-	p repo: -
-	p article: -
+	h1 #{pageTitle}
 
 	//- JavaScript block
 	+loadJQuery('1.11.2')

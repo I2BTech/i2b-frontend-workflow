@@ -118,22 +118,15 @@ module.exports = function(grunt) {
     'ftp-deploy': {
       build: {
         auth: {
-          host: 'myservername.domain',
+          host: 'hostname/IP',
           port: 21,
           authKey: 'key'
         },
-        //src: '/ruta-a/proyecto/',           // cambiar a la ruta local de desarrollo de tu maquina
-        dest: '/html/proyecto/', 
+        dest: '/html/<%= pkg.directory %>/', 
+        src: 'dist/',
         exclusions: [
         '**/.*',
-        '**/Thumbs.db',
-        '**/ftppass',
-        'node_modules',
-        'bower_components',
-        '*.json',
-        'Gruntfile.js',
-        'src',
-        '.sass-cache'
+        '**/Thumbs.db'
         ]
       }
     },
