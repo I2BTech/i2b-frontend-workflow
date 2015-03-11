@@ -133,4 +133,5 @@ Y todo .zip generado se guardará en el directorio `/backup` con la nomenclatura
 
 
 ####To-Do:
+- <s>Task para backup</s>
 - Task para performance
