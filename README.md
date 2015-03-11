@@ -21,9 +21,26 @@ Este es un sencillo flujo que pueden utilizar para proyectos frontend. Debes ten
 
 	`$ sudo gem install sass`
 
+
+###tl;dr (resumen)
+
+1. Descargar .zip de [I2B Frontend WorkFlow](https://github.com/I2BTech/i2b-frontend-workflow/archive/master.zip)
+2. Moverlos a su directorio de trabajo local (por ej. localhost/proyecto)
+3. `$ npm install` (instala node packages)
+4. `$ bower install` (instala librerias js)
+5. `$ grunt`
+6. fin!
+
 ###package.json
 
 Es el archivo que contiene los nombres de las librerías **Node** que utilizaremos para automatizar nuestras tareas recurrentes y que reside en la raíz del proyecto. Aquí están el nombre y la versión de cada plugin que necesitaremos, de una larga lista de plugins existentes.
+
+Se necesita cambiar al inicio de este archivo el nombre de cliente-y-proyecto (sin espacios ni caracteres especiales) y el nombre del directori del proyecto que debe ser el mismo en local y en el ftp de testing.
+
+	{
+		"name": "Nombre-Cliente-y-Proyecto",
+		"directory": "cliente_proyecto",
+		...
 
 ###bower.json
 
@@ -44,10 +61,11 @@ Es el archivo base con el cual crearemos las tareas que necesitamos corra **Grun
 - **bowercopy**: copia las librerías JS en /src/js/libs para su uso
 - **watch**: corre tareas definidas cada vez que se realizan cambios a ellas, en este caso todas las anteriores.
 - **ftp-deploy**: realiza subida de los archivos que indiques a un servidor definido a través de FTP.
+- **compress**: comprime en .zip y guarda el archivo en el directorio `/backup` con el nombre del proyecto y timestamp.
 
 ###Uso
 
-El directorio base se llama `/simple-grunt-workflow` y contiene todo lo necesario para comenzar a trabajar. Suponiendo que trabajas en un servidor local, la estructura básica de archivos es la siguiente:
+El directorio base se llama `/proyecto` y contiene todo lo necesario para comenzar a trabajar. Suponiendo que trabajas en un servidor local, la estructura básica de archivos es la siguiente:
 
 	/proyecto/Gruntfile.js
 	/proyecto/package.json
