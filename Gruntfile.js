@@ -1,11 +1,9 @@
 /**
  *
- * Basic Grunt workflow for small front-end projects
- * branch to fit I2B projects
+ * I2B Frontend WorkFlow
+ * Adaptado para Proyectos I2B.cl
  *
- * repo: https://github.com/juanbrujo/simple-grunt-workflow/tree/i2b
- * article: http://www.csslab.cl/2014/04/07/automatizacion-de-tareas-para-proyectos-en-front-end/
- * @csslab / ©2014
+ * repo: https://github.com/I2BTech/i2b-frontend-workflow#i2b-frontend-workflow
  *
 */
 module.exports = function(grunt) {
@@ -124,19 +122,38 @@ module.exports = function(grunt) {
           port: 21,
           authKey: 'key'
         },
-        src: '/Applications/MAMP/htdocs/simple-grunt-workflow/',
-        dest: '/public_html/simple-grunt-workflow/',
+        //src: '/ruta-a/proyecto/',           // cambiar a la ruta local de desarrollo de tu maquina
+        dest: '/html/proyecto/', 
         exclusions: [
-          '/Applications/MAMP/htdocs/simple-grunt-workflow/**/.*',
-          '/Applications/MAMP/htdocs/simple-grunt-workflow/**/.*/', 
-          '/Applications/MAMP/htdocs/simple-grunt-workflow/**/Thumbs.db',
-          '/Applications/MAMP/htdocs/simple-grunt-workflow/**/ftppass',
-          '/Applications/MAMP/htdocs/simple-grunt-workflow/node_modules',
-          '/Applications/MAMP/htdocs/simple-grunt-workflow/*.json',
-          '/Applications/MAMP/htdocs/simple-grunt-workflow/Gruntfile.js',
-          '/Applications/MAMP/htdocs/simple-grunt-workflow/src',
-          '/Applications/MAMP/htdocs/simple-grunt-workflow/.sass-cache'
+        '**/.*',
+        '**/Thumbs.db',
+        '**/ftppass',
+        'node_modules',
+        'bower_components',
+        '*.json',
+        'Gruntfile.js',
+        'src',
+        '.sass-cache'
         ]
+      }
+    },
+    compress: {
+      main: {
+        options: {
+          archive: 'backup/<%= pkg.name %>_<%= grunt.template.today("yyyymmdd-HHMMss") %>.zip'
+        },
+        expand: true,
+        //cwd: 'src/',
+        src: [
+          'src/**/*.*',
+          'dist/**/*.*',
+          '**.*',
+          '!*.md',
+          '!node_modules/**.*',
+          '!bower_components/**.*',
+          '!.sass-cache'
+        ],
+        dest: '<%= pkg.name %>_<%= grunt.template.today("yyyymmdd-HHMMss") %>/'
       }
     },
     watch: {
@@ -186,7 +203,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-spritesmith');
   grunt.loadNpmTasks('grunt-compile-handlebars');
+  grunt.loadNpmTasks('grunt-contrib-compress');
 
   grunt.registerTask('default', ['bowercopy','concat','newer:uglify','sprite','newer:jade','newer:imagemin','newer:sass','watch']);
   grunt.registerTask("testjs", ["jshint"]);
+  grunt.registerTask("backup", ["compress"]);
 };
