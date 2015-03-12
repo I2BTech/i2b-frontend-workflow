@@ -8,29 +8,21 @@ Este es un sencillo flujo que pueden utilizar para proyectos frontend. Debes ten
 - [NodeJS](http://nodejs.org/download/)
 - [LiveReload](http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions)
 - *Grunt command line interface* (CLI): se instala a través del comando de terminal:
-
-	`$ sudo npm install -g grunt-cli`
-	
+```
+$ sudo npm install -g grunt-cli
+```
 - [Bower](http://bower.io/):
-	
-	`$ sudo npm install -g bower`
-	
-Atención usuarios de Windows:
-
-	To use Bower on Windows, you must install msysgit correctly. Be sure to check the option shown below:
-
-	[ ] Use Git bash only
-	[x] Run Git from the Windows Command Prompt
-	[ ] Run Git and included Unix tools from the Windows Command Prompt
-	
+```
+$ sudo npm install -g bower
+```
 - [GIT](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-
 - [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
-
 - [Sass](http://sass-lang.com/install)
+```
+$ sudo gem install sass
+```
 
-	`$ sudo gem install sass`
-
+**Atención usuarios de Windows**, necesitas un poco más de cuidado para configurar todo correctamente [Leer más en la Wiki](https://github.com/I2BTech/i2b-frontend-workflow/wiki/Problemas-en-Windows)
 
 ###tl;dr (resumen)
 
