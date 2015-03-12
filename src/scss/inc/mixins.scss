@@ -21,24 +21,14 @@
 @mixin gradient-vertical($startColor: #1e5799, $endColor: #7db9e8)
 {
   background: $endColor;
-  background: -moz-linear-gradient(top,  $startColor 0%, $endColor 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$startColor), color-stop(100%,$endColor));
-  background: -webkit-linear-gradient(top,  $startColor 0%,$endColor 100%);
-  background: -o-linear-gradient(top,  $startColor 0%,$endColor 100%);
-  background: -ms-linear-gradient(top,  $startColor 0%,$endColor 100%);
   background: linear-gradient(to bottom,  $startColor 0%,$endColor 100%);
-  //filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",$endColor,$startColor));
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', EndColorStr='#{$endColor}', GradientType=0)";
 }
 @mixin gradient-horizontal($startColor: #1e5799, $endColor: #7db9e8)
 {
   background: $endColor;
-  background: -webkit-gradient(linear, left top, right top, from($startColor), to($endColor));
-  background: -webkit-linear-gradient(left, $startColor, $endColor);
-  background: -moz-linear-gradient(left, $startColor, $endColor);
-  background: -ms-linear-gradient(left, $startColor, $endColor);
-  background: -o-linear-gradient(left, $startColor, $endColor);
   background: linear-gradient(to right, $startColor, $endColor);
-  //filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",$endColor,$startColor));
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', EndColorStr='#{$endColor}', GradientType=1)";
 }
 @mixin background-size($arguments)
 {

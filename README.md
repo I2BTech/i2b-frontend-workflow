@@ -64,6 +64,7 @@ Es el archivo base con el cual crearemos las tareas que necesitamos corra **Grun
 - **watch**: corre tareas definidas cada vez que se realizan cambios a ellas, en este caso todas las anteriores.
 - **ftp-deploy**: realiza subida de los archivos que indiques a un servidor definido a través de FTP.
 - **compress**: comprime en .zip y guarda el archivo en el directorio `/backup` con el nombre del proyecto y timestamp.
+- **autoprefixer**: agrega prefijos directo a los archivos CSS generados de SCSS dentro de `dist/assets/css` correspondientes a las últimas 2 versiones (la actual y una anterior) de los principales browsers y las versiones en específico de IE 8 y 9.
 
 ###Uso
 

@@ -115,6 +115,15 @@ module.exports = function(grunt) {
         }]
       }
     },
+    autoprefixer: {
+      options: {
+        browsers: ['last 2 versions', 'ie 8', 'ie 9'],
+        cascade: false
+      },
+      your_target: {
+        src: 'dist/assets/css/*.css'
+      },
+    },
     'ftp-deploy': {
       build: {
         auth: {
@@ -166,7 +175,7 @@ module.exports = function(grunt) {
       },
       css: {
         files: ['src/scss/*.scss'],
-        tasks: ['newer:sass'],
+        tasks: ['newer:sass','newer:autoprefixer'],
         options: {
           spawn: false
         }
