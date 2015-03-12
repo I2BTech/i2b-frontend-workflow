@@ -1,17 +1,24 @@
-/* ==========================================================================
-   Description here please
-   coder: yournamehere
-   startdate: YYYYMMDD
-   ========================================================================== */
+/* ===========
+ * Proyecto:
+ * Fecha Inicio:
+ * Email Desarrollador:
+ * ======== */
 
-@import "inc/yui3-cssreset";
+@import "inc/normalize";
 @import "inc/mixins";
+@import "inc/colors";
+@import "inc/fonts";
 @import "inc/sprites";
+@include sprites($spritesheet-sprites);
 
-/* ========================================================================== 
-   ========================================================================== */
+/* -----------
+ * ESTILOS GENERALES
+ * -------- */
 
 body {
 	font-family: Tahoma, Verdana, Segoe, sans-serif;
 }
 
+/* -----------
+ * HOME
+ * -------- */

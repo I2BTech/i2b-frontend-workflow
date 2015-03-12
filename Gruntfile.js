@@ -38,7 +38,7 @@ module.exports = function(grunt) {
           destPrefix: 'src/scss/inc'
         },
         files: {
-          'yui3-cssreset.scss': 'yui3/build/cssreset/cssreset-min.css'
+          'normalize.scss': 'normalize.css/normalize.css'
         }
       }
     },
@@ -81,7 +81,7 @@ module.exports = function(grunt) {
     sprite:{
       all: {
         src: 'src/images/sprites/*.png',
-        dest: 'dist/assets/images/sprites.png',
+        dest: 'src/images/sprites.png',
         destCss: 'src/scss/inc/sprites.scss',
         algorithm: 'binary-tree',
         padding: 2
@@ -104,7 +104,7 @@ module.exports = function(grunt) {
     sass: {
       build: {
         options: {
-          style: 'expanded'
+          style: 'compact'
         },
         files: [{
           expand: true,
@@ -118,9 +118,10 @@ module.exports = function(grunt) {
     autoprefixer: {
       options: {
         browsers: ['last 2 versions', 'ie 8', 'ie 9'],
-        cascade: false
+        cascade: false,
+        map: true
       },
-      your_target: {
+      target: {
         src: 'dist/assets/css/*.css'
       },
     },
@@ -145,7 +146,6 @@ module.exports = function(grunt) {
           archive: 'backup/<%= pkg.name %>_<%= grunt.template.today("yyyymmdd-HHMMss") %>.zip'
         },
         expand: true,
-        //cwd: 'src/',
         src: [
           'src/**/*.*',
           'dist/**/*.*',
@@ -206,6 +206,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-spritesmith');
   grunt.loadNpmTasks('grunt-compile-handlebars');
   grunt.loadNpmTasks('grunt-contrib-compress');
+  grunt.loadNpmTasks('grunt-autoprefixer');
 
   grunt.registerTask('default', ['bowercopy','concat','newer:uglify','sprite','newer:jade','newer:imagemin','newer:sass','watch']);
   grunt.registerTask("testjs", ["jshint"]);

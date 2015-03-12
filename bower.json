@@ -21,6 +21,6 @@
     "selectivizr": "latest",
     "css3pie": "latest",
     "respond": "latest",
-    "yui3": "latest"
+    "normalize.css": "latest"
   }
 }
