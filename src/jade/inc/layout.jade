@@ -14,12 +14,7 @@ body
 	block wScripts
 	if !defaultConfig
 		+loadJQuery('1.11.2')
-		<!--[if lt IE 8]>
-		script(src='assets/js/libs/respond.js')
-		script(src='assets/js/libs/selectivizr.js')
-		<![endif]-->
 		script(src='assets/js/functions.js')
 	else
 		script(type="text/javascript", src="#{defaultConfig.rootJS}libs/jquery.js")
-		script(type="text/javascript", src="#{defaultConfig.rootJS}libs/respond.js")
 

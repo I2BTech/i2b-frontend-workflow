@@ -8,8 +8,8 @@ head
 	meta(name='viewport', content='width=device-width')
 	title #{pageTitle}
 	link(rel='stylesheet', href='assets/css/style.css')
-	<!--[if lt IE 8]>
-	script(src='assets/js/libs/html5shiv.js')
+	<!--[if lte IE 8]>
+	script(src='assets/js/libs/ie.min.js')
 	<![endif]-->
 	script(src='assets/js/libs/modernizr-detectizr.js')
 
@@ -18,8 +18,4 @@ body
 
 	//- JavaScript block
 	+loadJQuery('1.11.2')
-	<!--[if lt IE 8]>
-	script(src='assets/js/libs/respond.js')
-	script(src='assets/js/libs/selectivizr.js')
-	<![endif]-->
 	script(src='assets/js/functions.js')

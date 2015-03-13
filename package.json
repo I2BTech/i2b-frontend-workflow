@@ -27,7 +27,8 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-ftp-deploy": "^0.1.10",
     "grunt-newer": "^1.1.0",
-    "grunt-spritesmith": "^4.1.0"
+    "grunt-spritesmith": "^4.1.0",
+    "load-grunt-tasks": "^3.1.0"
   },
   "scripts": {
     "test": "grunt testjs --verbose"

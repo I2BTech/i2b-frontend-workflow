@@ -7,6 +7,7 @@
  *
 */
 module.exports = function(grunt) {
+  require('load-grunt-tasks')(grunt);
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     bowercopy: {
@@ -16,11 +17,8 @@ module.exports = function(grunt) {
         },
         files: {
           'jquery.js': 'jquery/dist/jquery.min.js',
-          'html5shiv.js': 'html5shiv/dist/html5shiv.js',
           'modernizr.js': 'modernizr/modernizr.js',
-          'detectizr.js': 'detectizr/dist/detectizr.js',
-          'selectivizr.js': 'selectivizr/selectivizr.js',
-          'respond.js': 'respond/dest/respond.min.js',
+          'detectizr.js': 'detectizr/dist/detectizr.js'
         },
       },
       folders: {
@@ -39,6 +37,14 @@ module.exports = function(grunt) {
         },
         files: {
           'normalize.scss': 'normalize.css/normalize.css'
+        }
+      },
+      ie: {
+        options: {
+          destPrefix: 'dist/assets/js/libs'
+        },
+        files: {
+          'ie.min.js': 'lt-ie-9/lt-ie-9.min.js'
         }
       }
     },
@@ -193,22 +199,8 @@ module.exports = function(grunt) {
       }
     }
   });
-  grunt.loadNpmTasks("grunt-contrib-concat");
-  grunt.loadNpmTasks('grunt-bowercopy');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-jade');
-  grunt.loadNpmTasks("grunt-contrib-jshint");
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-ftp-deploy');
-  grunt.loadNpmTasks('grunt-newer');
-  grunt.loadNpmTasks('grunt-spritesmith');
-  grunt.loadNpmTasks('grunt-compile-handlebars');
-  grunt.loadNpmTasks('grunt-contrib-compress');
-  grunt.loadNpmTasks('grunt-autoprefixer');
 
-  grunt.registerTask('default', ['bowercopy','concat','newer:uglify','sprite','newer:jade','newer:imagemin','newer:sass','watch']);
+  grunt.registerTask('default', ['bowercopy','newer:uglify','concat','sprite','newer:jade','newer:imagemin','newer:sass']);
   grunt.registerTask("testjs", ["jshint"]);
   grunt.registerTask("backup", ["compress"]);
 };
