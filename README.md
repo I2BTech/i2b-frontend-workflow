@@ -1,7 +1,7 @@
 I2B Frontend WorkFlow
 ===
 
-#####Adaptado para Proyectos I2B.cl
+**Adaptado para Proyectos I2B.cl**
 
 Este es un sencillo flujo que pueden utilizar para proyectos frontend. Debes tener lo fundamental para funcionar:
 
@@ -111,11 +111,21 @@ Luego es hora de descargar las librerías **JavaScript** base y sus dependencias
 
 Antes de correr **GruntJS**, abre **Gruntfile.js** y revisa los path que concuerden con los que estés trabajando, principamente los relacionados con **ftp-deploy** (si lo vas a utilizar). Si todo concuerda, acciona el comando:
 
-	$ grunt
+	$ grunt init
 	
 ![](http://www.csslab.cl/wp-content/uploads/2014/04/2watch.png)
 
+Este comando comenzará a mover las librerías **JavaScript** a sus lugares y concatena las que están ya programadas. 
+
+Luego para comenzar a formar los directorios de trabajo:
+
+	$ grunt default
+
 El cual comenzará a procesar las tareas ya definidas y se quedará en **watch** esperando cambios o actualizaciones en los archivos. En este momento debes llamar el directorio de trabajo en tu browser (a través de tu servidor web local) y activar **LiveReload**. Cuando el ícono cambie es porque está sincronizado con **GruntJS** y a cada cambio en archivos **html/sass/js/images** en tu proyecto, **watch** hará que se actualicen los archivos y **LiveReload** recargará el browser por tí.
+
+El trabajo diario se realiza sólo con **watch**:
+
+	$ grunt watch
 
 ![](http://www.csslab.cl/wp-content/uploads/2014/04/Screen-Shot-2014-04-03-at-5.12.04-PM.png)![](http://www.csslab.cl/wp-content/uploads/2014/04/Screen-Shot-2014-04-03-at-5.13.24-PM.png)
 
