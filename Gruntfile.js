@@ -7,51 +7,51 @@
  *
 */
 module.exports = function(grunt) {
-  require('load-grunt-tasks')(grunt);
+  require("load-grunt-tasks")(grunt);
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
+    pkg: grunt.file.readJSON("package.json"),
     bowercopy: {
       libs: {
         options: {
-          destPrefix: 'src/js/libs'
+          destPrefix: "src/js/libs"
         },
         files: {
-          'jquery.js': 'jquery/dist/jquery.min.js',
-          'modernizr.js': 'modernizr/modernizr.js',
-          'detectizr.js': 'detectizr/dist/detectizr.js'
+          "jquery.js": "jquery/dist/jquery.min.js",
+          "modernizr.js": "modernizr/modernizr.js",
+          "detectizr.js": "detectizr/dist/detectizr.js"
         },
       },
       folders: {
         options: {
-          destPrefix: 'dist/assets/css/pie'
+          destPrefix: "dist/assets/css/pie"
         },
         files: {
-          'PIE.js': 'css3pie/PIE.js',
-          'PIE.htc': 'css3pie/PIE.htc',
-          'PIE.php': 'css3pie/PIE.php'
+          "PIE.js": "css3pie/PIE.js",
+          "PIE.htc": "css3pie/PIE.htc",
+          "PIE.php": "css3pie/PIE.php"
         }
       },
       css: {
         options: {
-          destPrefix: 'src/scss/inc'
+          destPrefix: "src/scss/inc"
         },
         files: {
-          'normalize.scss': 'normalize.css/normalize.css'
+          "normalize.scss": "normalize.css/normalize.css"
         }
       },
       ie: {
         options: {
-          destPrefix: 'dist/assets/js/libs'
+          destPrefix: "dist/assets/js/libs"
         },
         files: {
-          'ie.min.js': 'lt-ie-9/lt-ie-9.min.js'
+          "ie.min.js": "lt-ie-9/lt-ie-9.min.js"
         }
       }
     },
     concat: {
       basic_and_extras: {
         files: {
-          'dist/assets/js/libs/modernizr-detectizr.js': ['dist/assets/js/libs/modernizr.js','dist/assets/js/libs/detectizr.js']
+          "dist/assets/js/libs/modernizr-detectizr.js": ["dist/assets/js/libs/modernizr.js","dist/assets/js/libs/detectizr.js"]
         },
       },
     },
@@ -62,9 +62,9 @@ module.exports = function(grunt) {
       libs: {
         files: [{
           expand: true,
-          cwd: 'src/js',
-          src: '**/*.js',
-          dest: 'dist/assets/js'
+          cwd: "src/js",
+          src: "**/*.js",
+          dest: "dist/assets/js"
         }]
       }
     },
@@ -78,18 +78,18 @@ module.exports = function(grunt) {
       dynamic: {
         files: [{
             expand: true,
-            cwd: 'src/images/',
-            src: ['*.{png,jpg,gif,svg}'],
-            dest: 'dist/assets/images/'
+            cwd: "src/images/",
+            src: ["*.{png,jpg,gif,svg}"],
+            dest: "dist/assets/images/"
         }]
       }
     },
     sprite:{
       all: {
-        src: 'src/images/sprites/*.png',
-        dest: 'src/images/sprites.png',
-        destCss: 'src/scss/inc/sprites.scss',
-        algorithm: 'binary-tree',
+        src: "src/images/sprites/*.png",
+        dest: "src/images/sprites.png",
+        destCss: "src/scss/inc/sprites.scss",
+        algorithm: "binary-tree",
         padding: 2
       }
     },
@@ -110,97 +110,98 @@ module.exports = function(grunt) {
     sass: {
       build: {
         options: {
-          style: 'compact'
+          style: "compact"
         },
         files: [{
           expand: true,
-          cwd: 'src/scss',
-          src: [ '*.scss' ],
-          dest: 'dist/assets/css',
-          ext: '.css'
+          cwd: "src/scss",
+          src: [ "*.scss" ],
+          dest: "dist/assets/css",
+          ext: ".css"
         }]
       }
     },
     autoprefixer: {
       options: {
-        browsers: ['last 2 versions', 'ie 8', 'ie 9'],
+        browsers: ["last 2 versions", "ie 8", "ie 9"],
         cascade: false,
         map: true
       },
       target: {
-        src: 'dist/assets/css/*.css'
+        src: "dist/assets/css/*.css"
       },
     },
-    'ftp-deploy': {
+    "ftp-deploy": {
       build: {
         auth: {
-          host: 'hostname/IP',
+          host: "hostname/IP",
           port: 21,
-          authKey: 'key'
+          authKey: "key"
         },
-        dest: '/html/<%= pkg.directory %>/', 
-        src: 'dist/',
+        dest: "/html/<%= pkg.directory %>/", 
+        src: "dist/",
         exclusions: [
-        '**/.*',
-        '**/Thumbs.db'
+        "**/.*",
+        "**/Thumbs.db"
         ]
       }
     },
     compress: {
       main: {
         options: {
-          archive: 'backup/<%= pkg.name %>_<%= grunt.template.today("yyyymmdd-HHMMss") %>.zip'
+          archive: "backup/<%= pkg.name %>_<%= grunt.template.today('yyyymmdd-HHMMss') %>.zip"
         },
         expand: true,
         src: [
-          'src/**/*.*',
-          'dist/**/*.*',
-          '**.*',
-          '!*.md',
-          '!node_modules/**.*',
-          '!bower_components/**.*',
-          '!.sass-cache'
+          "src/**/*.*",
+          "dist/**/*.*",
+          "**.*",
+          "!*.md",
+          "!node_modules/**.*",
+          "!bower_components/**.*",
+          "!.sass-cache"
         ],
-        dest: '<%= pkg.name %>_<%= grunt.template.today("yyyymmdd-HHMMss") %>/'
+        dest: "<%= pkg.name %>_<%= grunt.template.today('yyyymmdd-HHMMss') %>/"
       }
     },
     watch: {
       options: {
-        livereload: true
+        livereload: true,
+        spawn: false
       },
       scripts: {
-        files: ['src/js/*.js'],
-        tasks: ['newer:uglify'],
+        files: ["src/js/*.js"],
+        tasks: ["newer:uglify"],
         options: {
             spawn: false
         }
       },
       jade: {
-        files: 'src/jade/*.jade',
-        tasks: ['newer:jade']
+        files: "src/jade/*.jade",
+        tasks: ["newer:jade"]
       },
       css: {
-        files: ['src/scss/*.scss'],
-        tasks: ['newer:sass','newer:autoprefixer'],
+        files: ["src/scss/*.scss"],
+        tasks: ["newer:sass","newer:autoprefixer"],
         options: {
           spawn: false
         }
       },
       sprites: {
-        files: ['src/images/sprites/*.*'],
-        tasks: ['sprite']
+        files: ["src/images/sprites/*.*"],
+        tasks: ["sprite"]
       },
       another: {
-        files: ['src/images/*.*'],
-        tasks: ['newer:imagemin'],
+        files: ["src/images/*.*"],
+        tasks: ["newer:imagemin"],
         options: {
           spawn: false
         }
       }
     }
   });
-
-  grunt.registerTask('default', ['bowercopy','newer:uglify','concat','sprite','newer:jade','newer:imagemin','newer:sass']);
+  grunt.registerTask("init", ["bowercopy","concat"]);
+  grunt.registerTask("default", ["newer:uglify","sprite","newer:jade","newer:imagemin","newer:sass"]);
   grunt.registerTask("testjs", ["jshint"]);
   grunt.registerTask("backup", ["compress"]);
 };

@@ -24,7 +24,7 @@ $ sudo gem install sass
 
 **Atención usuarios de Windows**, necesitas un poco más de cuidado para configurar todo correctamente [Leer más en la Wiki](https://github.com/I2BTech/i2b-frontend-workflow/wiki/Problemas-en-Windows)
 
-###tl;dr (resumen)
+###TL;DR (resumen)
 
 1. Descargar .zip de [I2B Frontend WorkFlow](https://github.com/I2BTech/i2b-frontend-workflow/archive/master.zip)
 2. Moverlos a su directorio de trabajo local (por ej. localhost/proyecto)
