@@ -10,13 +10,15 @@
 @import "inc/fonts";
 @import "inc/sprites";
 @include sprites($spritesheet-sprites);
+@import "inc/variables";
+@import "inc/components";
 
 /* -----------
  * ESTILOS GENERALES
  * -------- */
 
 body {
-	font-family: Tahoma, Verdana, Segoe, sans-serif;
+	font-family: $primary-fontfamily;
 }
 
 /* -----------

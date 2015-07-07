@@ -30,23 +30,22 @@ $ sudo gem install sass
 2. Moverlos a su directorio de trabajo local (por ej. localhost/proyecto)
 3. `$ npm install` (instala node packages)
 4. `$ bower install` (instala librerias js)
-5. `$ grunt`
+5. `$ grunt init`
 6. fin!
 
 ###package.json
 
 Es el archivo que contiene los nombres de las librerías **Node** que utilizaremos para automatizar nuestras tareas recurrentes y que reside en la raíz del proyecto. Aquí están el nombre y la versión de cada plugin que necesitaremos, de una larga lista de plugins existentes.
 
-Se necesita cambiar al inicio de este archivo el nombre de cliente-y-proyecto (sin espacios ni caracteres especiales) y el nombre del directori del proyecto que debe ser el mismo en local y en el ftp de testing.
+Se necesita cambiar al inicio de este archivo el *Nombre-Cliente-y-Proyecto* (sin espacios ni caracteres especiales):
 
 	{
-		"name": "Nombre-Cliente-y-Proyecto",
-		"directory": "cliente_proyecto",
+		"name": "Nombre-Cliente-y-Proyecto"
 		...
 
 ###bower.json
 
-Archivo json que contiene las librerías **JavaScript** utilizadas para este proyecto. A través de ella se realiza el traspaso desde cada repositorio y se descarga las últimas versiones disponibles a `bower_components` y que posteriormente serán procesadas.
+Archivo json que contiene las librerías **JavaScript** utilizadas para este proyecto. A través de ella se realiza el traspaso desde cada repositorio y se descarga las últimas versiones disponibles a `bower_components` y que posteriormente serán procesados.
 
 ###Gruntfile.js
 
@@ -59,12 +58,13 @@ Es el archivo base con el cual crearemos las tareas que necesitamos corra **Grun
 - **imagemin**: comprime imágenes
 - **sass**: compila y minifica archivos .scss
 - **jade**: compila y minifica archivos .jade
-- **handlebars**: compila archivos .handlebars utilizando este template system
+- <s>**handlebars**: compila archivos .handlebars utilizando este template system</s>
 - **bowercopy**: copia las librerías JS en /src/js/libs para su uso
 - **watch**: corre tareas definidas cada vez que se realizan cambios a ellas, en este caso todas las anteriores.
-- **ftp-deploy**: realiza subida de los archivos que indiques a un servidor definido a través de FTP.
-- **compress**: comprime en .zip y guarda el archivo en el directorio `/backup` con el nombre del proyecto y timestamp.
-- **autoprefixer**: agrega prefijos directo a los archivos CSS generados de SCSS dentro de `dist/assets/css` correspondientes a las últimas 2 versiones (la actual y una anterior) de los principales browsers y las versiones en específico de IE 8 y 9.
+- <s>**ftp-deploy**: realiza subida de los archivos que indiques a un servidor definido a través de FTP.</s>
+- <s>**compress**: comprime en .zip y guarda el archivo en el directorio `/backup` con el nombre del proyecto y timestamp.</s>
+- **autoprefixer**: agrega prefijos directo a los archivos CSS generados de SCSS dentro de `dist/assets/css` correspondientes a las últimas 3 versiones (la actual y una anterior) de los principales browsers y las versiones en específico de IE 8 y 9.
+- **jshint** y **htmlhint**: verifica sintaxis JS y HTML según reglas básicas definidas en `.jshintrc` y `.htmlhintrc` respectivamente.
 
 ###Uso
 
@@ -72,9 +72,9 @@ El directorio base se llama `/proyecto` y contiene todo lo necesario para comenz
 
 	/proyecto/Gruntfile.js
 	/proyecto/package.json
-	/proyecto/ftppass (este archivo cuando necesario debes renombrarlo a .ftppass)
 	/proyecto/dist/index.html
-	
+
+
 El directorio donde trabajarás tus assets se llama `/src ` y contiene:
 
 	/proyecto/src/js/
@@ -85,14 +85,15 @@ El directorio donde trabajarás tus assets se llama `/src ` y contiene:
 	/proyecto/src/jade/inc/
 	/proyecto/src/images/
 	/proyecto/src/images/sprites/
-	
+
+
 Los que después de procesados por **GruntJS** residirán en `/assets` y son los que debes llamar desde tus archivos **HTML**:
 
 	/proyecto/dist/assets/js/
 	/proyecto/dist/assets/js/libs/
 	/proyecto/dist/assets/css/
 	/proyecto/dist/assets/images/
-	
+
 Para comenzar a trabajar, en Terminal/Consola debes estar en el directorio que estés trabajando:
 
 	$ cd /path/to/proyecto/
@@ -100,7 +101,7 @@ Para comenzar a trabajar, en Terminal/Consola debes estar en el directorio que e
 Para instalar los plugins a utilizarse y que están definidos en **package.json**:
 
 	$ sudo npm install
-	
+
 ![](http://www.csslab.cl/wp-content/uploads/2014/04/1npm.png)
 
 Con esto se llamarán a todos los repositorios e instalará los paquetes necesarios para hacer las tareas que tenemos asignadas. Esto puede tomar unos minutos y creará un directorio `/node_modules` en la raíz de tu proyecto. Este directorio sólo le es útil a **GruntJS**, no debemos utilizarlo en ambiente productivo.
@@ -112,16 +113,16 @@ Luego es hora de descargar las librerías **JavaScript** base y sus dependencias
 Antes de correr **GruntJS**, abre **Gruntfile.js** y revisa los path que concuerden con los que estés trabajando, principamente los relacionados con **ftp-deploy** (si lo vas a utilizar). Si todo concuerda, acciona el comando:
 
 	$ grunt init
-	
+
 ![](http://www.csslab.cl/wp-content/uploads/2014/04/2watch.png)
 
 Este comando comenzará a mover las librerías **JavaScript** a sus lugares y concatena las que están ya programadas. 
 
 Luego para comenzar a formar los directorios de trabajo:
 
-	$ grunt default
+	$ grunt
 
-El cual comenzará a procesar las tareas ya definidas y se quedará en **watch** esperando cambios o actualizaciones en los archivos. En este momento debes llamar el directorio de trabajo en tu browser (a través de tu servidor web local) y activar **LiveReload**. Cuando el ícono cambie es porque está sincronizado con **GruntJS** y a cada cambio en archivos **html/sass/js/images** en tu proyecto, **watch** hará que se actualicen los archivos y **LiveReload** recargará el browser por tí.
+El cual comenzará a procesar las tareas ya definidas. En este momento debes llamar el directorio de trabajo en tu browser (a través de tu servidor web local) y activar **LiveReload**. Cuando el ícono cambie es porque está sincronizado con **GruntJS** y a cada cambio en archivos **jade/sass/js/images** en tu proyecto, **watch** hará que se actualicen los archivos y **LiveReload** recargará el browser por tí.
 
 El trabajo diario se realiza sólo con **watch**:
 
@@ -139,30 +140,14 @@ A través de un nueva tarea de **GruntJS** se prueba el archivo **JavaScript** e
 
 	$ grunt testjs
 
+Además se rastrea los archivos `.html` generados desde `.jade` buscando errores de sintaxis básicos automáticamente a través de **watch** y manualmente con el comando:
 
-###Deploy
+	$ grunt testhtml
 
-Se adjunta el plugin **ftp-deploy** el que debe utilizarse cuando necesitas mover archivos a tu servidor de pruebas a través del protocolo FTP. Se configura en **Gruntfile.js** la URL, puerto y dónde se lee el u/p de acceso. Éstos se guardan en un archivo **ftppass** el que se adjunta, pero en tu directorio de trabajo debe guardarse como archivo oculto **.ftppass**. Además, está pre-configurado los archivos y directorios que se excluyen, como **Gruntfile.js**, **package.json**, **/assets-dev** y **/node_modules** entre otros. Cuando necesites subir a productivo tus archivos, desactivas el **watch** de **GruntJS** (`⌘+.` ó `ctrl+.`) y envías todos tus archivos al servidor con el siguiente comando:
-
-	$ grunt ftp-deploy
-	
-###Backup
-
-Se agrega un task a través del plugin **contrib-compress** el que comprime en .zip los siguientes archivos y directorios de trabajo:
-
-	src/**/*.*
-	dist/**/*.*
-	**.*
-
-Para utilizarlo basta correr:
-
-	$ grunt backup
-
-Y todo .zip generado se guardará en el directorio `/backup` con la nomenclatura `nombreproyecto_YYYYMMDD-HHMMss.zip`
 
 **Happy Coding :)**
 
 
 ####To-Do:
-- <s>Task para backup</s>
+
 - Task para performance

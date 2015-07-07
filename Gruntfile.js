@@ -3,7 +3,7 @@
  * I2B Frontend WorkFlow
  * Adaptado para Proyectos I2B.cl
  *
- * repo: https://github.com/I2BTech/i2b-frontend-workflow#i2b-frontend-workflow
+ * repo: https://github.com/I2BTech/i2b-frontend-workflow
  *
 */
 module.exports = function(grunt) {
@@ -74,6 +74,14 @@ module.exports = function(grunt) {
         jshintrc: ".jshintrc"
       }
     },
+    htmlhint: {
+      options: {
+        htmlhintrc: '.htmlhintrc'
+      },
+      html: {
+        src: ['dist/**/*.html']
+      }
+    },
     imagemin: {
       dynamic: {
         files: [{
@@ -123,46 +131,13 @@ module.exports = function(grunt) {
     },
     autoprefixer: {
       options: {
-        browsers: ["last 2 versions", "ie 8", "ie 9"],
+        browsers: ["last 3 versions", "ie 8", "ie 9"],
         cascade: false,
         map: true
       },
       target: {
         src: "dist/assets/css/*.css"
       },
-    },
-    "ftp-deploy": {
-      build: {
-        auth: {
-          host: "hostname/IP",
-          port: 21,
-          authKey: "key"
-        },
-        dest: "/html/<%= pkg.directory %>/", 
-        src: "dist/",
-        exclusions: [
-        "**/.*",
-        "**/Thumbs.db"
-        ]
-      }
-    },
-    compress: {
-      main: {
-        options: {
-          archive: "backup/<%= pkg.name %>_<%= grunt.template.today('yyyymmdd-HHMMss') %>.zip"
-        },
-        expand: true,
-        src: [
-          "src/**/*.*",
-          "dist/**/*.*",
-          "**.*",
-          "!*.md",
-          "!node_modules/**.*",
-          "!bower_components/**.*",
-          "!.sass-cache"
-        ],
-        dest: "<%= pkg.name %>_<%= grunt.template.today('yyyymmdd-HHMMss') %>/"
-      }
     },
     watch: {
       options: {
@@ -178,7 +153,7 @@ module.exports = function(grunt) {
       },
       jade: {
         files: "src/jade/*.jade",
-        tasks: ["newer:jade"]
+        tasks: ["newer:jade","newer:htmlhint"]
       },
       css: {
         files: ["src/scss/*.scss"],
@@ -203,5 +178,5 @@ module.exports = function(grunt) {
   grunt.registerTask("init", ["bowercopy","concat"]);
   grunt.registerTask("default", ["newer:uglify","sprite","newer:jade","newer:imagemin","newer:sass"]);
   grunt.registerTask("testjs", ["jshint"]);
-  grunt.registerTask("backup", ["compress"]);
+  grunt.registerTask("testhtml", ["htmlhint"]);
 };
