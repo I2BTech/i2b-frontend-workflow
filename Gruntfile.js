@@ -7,7 +7,12 @@
  *
 */
 module.exports = function(grunt) {
-  require("load-grunt-tasks")(grunt);
+  
+  require('time-grunt')(grunt);
+  require('jit-grunt')(grunt, {
+    sprite: 'grunt-spritesmith'
+  });
+
   grunt.initConfig({
     pkg: grunt.file.readJSON("package.json"),
     bowercopy: {
@@ -57,7 +62,8 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        mangle: true
+        mangle: true,
+        preserveComments: 'some'
       },
       libs: {
         files: [{
@@ -141,15 +147,11 @@ module.exports = function(grunt) {
     },
     watch: {
       options: {
-        livereload: true,
-        spawn: false
+        livereload: true
       },
       scripts: {
         files: ["src/js/*.js"],
-        tasks: ["newer:uglify"],
-        options: {
-            spawn: false
-        }
+        tasks: ["newer:uglify"]
       },
       jade: {
         files: "src/jade/*.jade",
@@ -157,10 +159,7 @@ module.exports = function(grunt) {
       },
       css: {
         files: ["src/scss/*.scss"],
-        tasks: ["newer:sass","newer:autoprefixer"],
-        options: {
-          spawn: false
-        }
+        tasks: ["newer:sass","newer:autoprefixer"]
       },
       sprites: {
         files: ["src/images/sprites/*.*"],
@@ -168,15 +167,12 @@ module.exports = function(grunt) {
       },
       another: {
         files: ["src/images/*.*"],
-        tasks: ["newer:imagemin"],
-        options: {
-          spawn: false
-        }
+        tasks: ["newer:imagemin"]
       }
     }
   });
   grunt.registerTask("init", ["bowercopy","concat"]);
-  grunt.registerTask("default", ["newer:uglify","sprite","newer:jade","newer:imagemin","newer:sass"]);
+  grunt.registerTask("default", ["newer:uglify","sprite","newer:jade","newer:imagemin","newer:sass","watch"]);
   grunt.registerTask("testjs", ["jshint"]);
   grunt.registerTask("testhtml", ["htmlhint"]);
 };

@@ -16,7 +16,7 @@
   "devDependencies": {
     "detectizr": "latest",
     "modernizr": "latest",
-    "jquery": "1.11.2",
+    "jquery": "1.11.3",
     "css3pie": "latest",
     "normalize.css": "latest",
     "lt-ie-9": "latest"
