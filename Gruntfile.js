@@ -138,8 +138,7 @@ module.exports = function(grunt) {
     autoprefixer: {
       options: {
         browsers: ["last 3 versions", "ie 8", "ie 9"],
-        cascade: false,
-        map: true
+        cascade: false
       },
       target: {
         src: "dist/assets/css/*.css"
