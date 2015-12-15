@@ -17,18 +17,18 @@
     "grunt-contrib-concat": "^0.5.1",
     "grunt-contrib-imagemin": "^0.9.4",
     "grunt-contrib-jade": "^0.14.1",
-    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-jshint": "^0.11.3",
     "grunt-contrib-nodeunit": "^0.4.1",
-    "grunt-sass": "^1.1.0-beta",
     "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-htmlhint": "^0.4.1",
     "grunt-newer": "^1.1.1",
+    "grunt-sass": "^1.1.0",
     "grunt-spritesmith": "^4.7.1",
     "jit-grunt": "^0.9.1",
-    "time-grunt": "^1.2.1"
+    "time-grunt": "^1.2.2"
   },
   "scripts": {
-    "test": "grunt testjs --verbose"
+    "test": "grunt testjs --verbose && grunt testhtml --verbose"
   }
 }
