@@ -26,17 +26,11 @@ $ sudo npm install -g bower
 3. `$ npm install` (instala node packages)
 4. `$ bower install` (instala librerias js)
 5. `$ grunt init`
-6. fin!
+6. `$ grunt`
 
 ###package.json
 
 Es el archivo que contiene los nombres de las librerías **Node** que utilizaremos para automatizar nuestras tareas recurrentes y que reside en la raíz del proyecto. Aquí están el nombre y la versión de cada plugin que necesitaremos, de una larga lista de plugins existentes.
-
-Se necesita cambiar al inicio de este archivo el *Nombre-Cliente-y-Proyecto* (sin espacios ni caracteres especiales):
-
-	{
-		"name": "Nombre-Cliente-y-Proyecto"
-		...
 
 ###bower.json
 
@@ -63,7 +57,9 @@ El directorio base se llama `/proyecto` y contiene todo lo necesario para comenz
 
 	/proyecto/Gruntfile.js
 	/proyecto/package.json
-	/proyecto/dist/index.html
+	/proyecto/src/
+	/proyecto/dist/
+	/proyecto/build/
 
 
 El directorio donde trabajarás tus assets se llama `/src ` y contiene:
@@ -107,7 +103,7 @@ Antes de correr **GruntJS**, abre **Gruntfile.js** y revisa los path que concuer
 
 ![](http://www.csslab.cl/wp-content/uploads/2014/04/2watch.png)
 
-Este comando comenzará a mover las librerías **JavaScript** a sus lugares y concatena las que están ya programadas. 
+Este comando comenzará a mover las librerías **JavaScript** a sus lugares correspondientes. 
 
 Luego para comenzar a formar los directorios de trabajo:
 
@@ -135,6 +131,13 @@ Además se rastrea los archivos `.html` generados desde `.jade` buscando errores
 
 	$ grunt testhtml
 
+###Build
+
+A través de un nueva tarea de **GruntJS** se procesan los archivos (principalmente dentro de assets) minificándolos, concatenándolos y limpiando los no archivos que no son necesarios para producción:
+
+	$ grunt buils
+
+Estos quedarán en el directorio /build listos para ser integrados posteriormente.
 
 **Happy Coding :)**
 
