@@ -16,11 +16,6 @@ $ sudo npm install -g grunt-cli
 $ sudo npm install -g bower
 ```
 - [GIT](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-- [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
-- [Sass](http://sass-lang.com/install)
-```
-$ sudo gem install sass
-```
 
 **Atención usuarios de Windows**, necesitas un poco más de cuidado para configurar todo correctamente [Leer más en la Wiki](https://github.com/I2BTech/i2b-frontend-workflow/wiki/Problemas-en-Windows)
 
@@ -52,17 +47,13 @@ Archivo json que contiene las librerías **JavaScript** utilizadas para este pro
 Es el archivo base con el cual crearemos las tareas que necesitamos corra **GruntJS** por nosotros y que reside en la raíz del proyecto junto a **package.json**. En este archivo están definidas los plugins que utilizaremos y cómo deben trabajar, en esta ocasión incluyo los siguientes:
 
 - **concat**: concatena y minifica librerías JavaScript
-- **jshint**: busca y sugiere mejoras en tu JavaScript
 - **uglify**: minifica archivos JavaScript
 - **spritesmith**: crea una imagen y una hoja de estilos sprite a partir de varios íconos
 - **imagemin**: comprime imágenes
 - **sass**: compila y minifica archivos .scss
 - **jade**: compila y minifica archivos .jade
-- <s>**handlebars**: compila archivos .handlebars utilizando este template system</s>
 - **bowercopy**: copia las librerías JS en /src/js/libs para su uso
 - **watch**: corre tareas definidas cada vez que se realizan cambios a ellas, en este caso todas las anteriores.
-- <s>**ftp-deploy**: realiza subida de los archivos que indiques a un servidor definido a través de FTP.</s>
-- <s>**compress**: comprime en .zip y guarda el archivo en el directorio `/backup` con el nombre del proyecto y timestamp.</s>
 - **autoprefixer**: agrega prefijos directo a los archivos CSS generados de SCSS dentro de `dist/assets/css` correspondientes a las últimas 3 versiones (la actual y una anterior) de los principales browsers y las versiones en específico de IE 8 y 9.
 - **jshint** y **htmlhint**: verifica sintaxis JS y HTML según reglas básicas definidas en `.jshintrc` y `.htmlhintrc` respectivamente.
 

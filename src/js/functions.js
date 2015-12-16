@@ -1,5 +1,5 @@
 /*! ===========
- * Proyecto:
- * Fecha Inicio:
- * Email Desarrollador:
+ * Project Name:
+ * Start Date:
+ * Developer's email:
  * =========== */

@@ -14,11 +14,11 @@ html(lang='es')
 		link(rel='stylesheet', href='assets/css/style.css')
 		// endbuild
 
-		<!--[if lte IE 8]><!-->
+		<!--[if lte IE 8]>
 		// build:js assets/js/libs/ie.min.js
 		script(src='assets/js/libs/ie.js')
 		// endbuild
-		<!--<![endif]-->
+		<![endif]-->
 
 		// build:js assets/js/libs/modernizr-detectizr.min.js
 		script(src='assets/js/libs/modernizr.js')
@@ -31,6 +31,8 @@ html(lang='es')
 		<![endif]-->
 
 		h1 #{pageTitle}
+
+		h2 PAGE
 
 		//- JavaScript block
 		+loadJQuery('1.11.3')

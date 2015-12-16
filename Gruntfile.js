@@ -10,7 +10,8 @@ module.exports = function(grunt) {
   
   require('time-grunt')(grunt);
   require('jit-grunt')(grunt, {
-    sprite: 'grunt-spritesmith'
+    sprite: 'grunt-spritesmith',
+    useminPrepare: 'grunt-usemin'
   });
 
   grunt.initConfig({
@@ -18,7 +19,7 @@ module.exports = function(grunt) {
     bowercopy: {
       libs: {
         options: {
-          destPrefix: "src/js/libs"
+          destPrefix: "dist/assets/js/libs"
         },
         files: {
           "jquery.js": "jquery/dist/jquery.min.js",
@@ -49,30 +50,52 @@ module.exports = function(grunt) {
           destPrefix: "dist/assets/js/libs"
         },
         files: {
-          "ie.min.js": "lt-ie-9/lt-ie-9.min.js"
+          "ie.js": "lt-ie-9/lt-ie-9.min.js"
         }
       }
     },
-    concat: {
-      basic_and_extras: {
-        files: {
-          "dist/assets/js/libs/modernizr-detectizr.js": ["dist/assets/js/libs/modernizr.js","dist/assets/js/libs/detectizr.js"]
-        },
-      },
-    },
     uglify: {
-      options: {
-        mangle: true,
-        preserveComments: 'some'
-      },
-      libs: {
+
+      main: {
+        options: {
+          mangle: false,
+          beautify: true,
+          preserveComments: 'some'
+        },
         files: [{
           expand: true,
           cwd: "src/js",
           src: "**/*.js",
           dest: "dist/assets/js"
         }]
+      },
+      build: {
+        options: {
+          mangle: false,
+          compress: true
+        },
+        files: [{
+          expand: true,
+          cwd: "dist/assets/js",
+          src: "**/*.js",
+          dest: "build/assets/js"
+        }]
       }
+
+
+//       options: {
+//         mangle: false,
+//         beautify: true
+//       },
+//       libs: {
+//         files: [{
+//           expand: true,
+//           cwd: "src/js",
+//           src: "**/*.js",
+//           dest: "dist/assets/js"
+//         }]
+//       }
+
     },
     jshint: {
       files: ["src/js/functions.js"],
@@ -138,19 +161,73 @@ module.exports = function(grunt) {
     autoprefixer: {
       options: {
         browsers: ["last 3 versions", "ie 8", "ie 9"],
-        cascade: false
+        cascade: false,
+        map: true
       },
       target: {
         src: "dist/assets/css/*.css"
       },
     },
+    copy: {
+      html: {
+        files: [
+        {
+          expand: true, 
+          cwd: 'dist/', 
+          src: ['*.html'], 
+          dest: 'build/'
+        },
+        {
+          expand: true,
+          cwd: 'dist/assets/css/pie/', 
+          src: ['*.*'], 
+          dest: 'build/assets/css/pie/'
+        },
+        {
+          expand: true,
+          cwd: 'dist/assets/images/', 
+          src: ['*.*'], 
+          dest: 'build/assets/images/'
+        }
+        ]
+      }
+    },
+    cssmin: {
+      options: {
+        keepSpecialComments: 0
+      }
+    },
+    clean: {
+      js: [
+        "build/assets/js/**/*.js", 
+        "!build/assets/js/**/*.min.js"
+      ]
+    },
+    useminPrepare: {
+      html: 'dist/*.html',
+      options: {
+        dest: 'build'
+      }
+    },
+    usemin:{
+      html:['build/*.html'],
+    },
     watch: {
       options: {
         livereload: true
       },
+      configFiles: {
+        files: [ 'Gruntfile.js' ],
+        options: {
+          reload: true
+        }
+      },
       scripts: {
         files: ["src/js/*.js"],
-        tasks: ["newer:uglify"]
+        tasks: ["newer:uglify:main"],
+        options: {
+          spawn: false
+        }
       },
       jade: {
         files: "src/jade/*.jade",
@@ -166,12 +243,25 @@ module.exports = function(grunt) {
       },
       another: {
         files: ["src/images/*.*"],
-        tasks: ["newer:imagemin"]
+        tasks: ["newer:imagemin"],
+        options: {
+          spawn: false
+        }
       }
     }
   });
-  grunt.registerTask("init", ["bowercopy","concat"]);
-  grunt.registerTask("default", ["newer:uglify","sprite","newer:jade","newer:imagemin","newer:sass","watch"]);
+  grunt.registerTask("init", ["bowercopy"]);
+  grunt.registerTask("default", ["newer:uglify:main","sprite","newer:jade","newer:imagemin","newer:sass","watch"]);
   grunt.registerTask("testjs", ["jshint"]);
   grunt.registerTask("testhtml", ["htmlhint"]);
+  grunt.registerTask("build",[
+    "copy",
+    "useminPrepare",
+    "concat",
+    "uglify",
+    "autoprefixer",
+    "cssmin",
+    "clean",
+    "usemin"
+  ]);
 };
